@@ -2,6 +2,8 @@
 using System.ComponentModel.Design;
 using System.IO;
 
+
+//TODO: fix load method
 namespace dtp7_contact_list
 {
     class MainClass
@@ -219,6 +221,8 @@ namespace dtp7_contact_list
             }
         }
 
+
+        //TBD: add counter for how many people loaded
         private static void LoadContactListFromFile(string lastFileName)
         {
             try
@@ -231,11 +235,16 @@ namespace dtp7_contact_list
                         LoadContact(line); // Also prints the line loaded
                     }
                 }
+                int index = 0;
+                foreach(Person p in contactList)
+                {
+                    index++;
+                }
+                Console.WriteLine($"loaded {index} people to the list");
             }
             catch (System.IO.FileNotFoundException)
             {
                 Console.WriteLine("could not find the file in the directory");
-
             }
         }
 
