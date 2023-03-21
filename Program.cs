@@ -17,7 +17,7 @@ namespace dtp7_contact_list
             public Person() { }
             public Person(string persname, string surname)
             {
-                this.persname = persname; this.surname = surname;
+                this.persname = persname; this.surname = surname; phone = new List<string>(); address= new List<string>();
             }
             public void AddPhone(string phone)
                 => this.phone.Add(phone);
