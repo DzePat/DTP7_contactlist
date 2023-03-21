@@ -2,7 +2,7 @@
 using System.ComponentModel.Design;
 using System.IO;
 
-
+//TODO: add delete message if the person doesnt exist
 //TODO: fix load method
 namespace dtp7_contact_list
 {
@@ -152,20 +152,24 @@ namespace dtp7_contact_list
             } while (commandLine[0] != "quit");
         }
 
+        //TBD: add message if person is not on the list to be deleted
         private static void DeleteAllPersons(string persname, string surname)
         {
             int found;
             do
             {
                 found = -1;
-                for(int i = 0; i < contactList.Count; i++)
+                for (int i = 0; i < contactList.Count; i++)
                 {
-                    if (contactList[i].persname == persname && contactList[i].surname ==surname)
+                    if (contactList[i].persname == persname && contactList[i].surname == surname)
                     {
                         found = i; break; // breaks the for loop
                     }
                 }
-                if (found == -1) break; // breaks the do loop
+                if (found == -1) {
+                    Console.WriteLine("the person is not on the list");
+                    break; }
+                // breaks the do loop
                 contactList.RemoveAt(found);
             } while (true);
         }
@@ -244,7 +248,7 @@ namespace dtp7_contact_list
             }
             catch (System.IO.FileNotFoundException)
             {
-                Console.WriteLine("could not find the file in the directory");
+                Console.WriteLine($"could not find the file at {lastFileName}");
             }
         }
 
